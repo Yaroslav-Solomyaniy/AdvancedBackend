@@ -7,10 +7,13 @@ import { RolesModule } from './roles/roles.module';
 import { Role } from './roles/model/roles.model';
 import { UsersRoles } from './users-roles/user-roles.model';
 import { AuthorizationModule } from './authorization/authorization.module';
+import { AuthService } from './auth/auth.service';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  controllers: [],
-  providers: [],
+  controllers: [AuthController],
+  providers: [AuthService],
   imports: [
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`,
@@ -29,6 +32,7 @@ import { AuthorizationModule } from './authorization/authorization.module';
     RolesModule,
     UsersRoles,
     AuthorizationModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
